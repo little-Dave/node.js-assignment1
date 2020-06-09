@@ -16,7 +16,15 @@ const server = http.createServer((req, res) => {
   if (url === "/") {
     res.write("<html>");
     res.write("<head><title>Node.js - Assignment 1</title></head>");
-    res.write("<body><h1>Hello and welcome</h1><p>Hope you like pizza</p></body>");
+    res.write("<body>");
+    res.write("<h1>Hello and welcome</h1><p>Hope you like pizza</p>");
+    res.write(`
+      <form action='/create-user' method='POST'>
+        <input type='text' name='username' placeholder='enter username'/>
+        <button type='submit'>submit</button>
+      </form>
+    `)
+    res.write("</body>");
     res.write("</html>");
     res.end();
   };
