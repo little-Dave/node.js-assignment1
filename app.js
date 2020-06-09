@@ -35,6 +35,19 @@ const server = http.createServer((req, res) => {
     res.write("</html>");
     res.end();
   };
+  if (url === "/create-user" && method === "POST") {
+    const body = [];
+    req.on("data", (chunk) => {
+      body.push(chunk);
+    });
+    req.on("end", () => {
+      const parsedBody = Buffer.concat(body).toString();
+      console.log(parsedBody.split("=")[1]);
+    });
+    res.statusCode = 302;
+    res.setHeader("Location", "/");
+    res.end();
+  }
 });
 
 server.listen(3000);
