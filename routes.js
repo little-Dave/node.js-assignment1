@@ -12,6 +12,7 @@ const requestHandler = (req, res) => {
   const url = req.url;
   const method = req.method;
   if (url === "/") {
+    res.setHeader("Content-Type", "text/html");
     res.write("<html>");
     res.write("<head><title>Node.js - Assignment 1</title></head>");
     res.write("<body>");
@@ -27,6 +28,7 @@ const requestHandler = (req, res) => {
     res.end();
   };
   if (url === "/users") {
+    res.setHeader("Content-Type", "text/html");
     res.write("<html>");
     res.write("<head><title>Node.js - Assignment 1</title></head>");
     res.write(`<body><ul>${users.map(user => `<li>${user}</li>`).join("")}</ul></body>`);
